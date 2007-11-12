@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Text::Pipe::Base';
@@ -68,11 +68,13 @@ Methods inherited from L<Text::Pipe::Base>:
     $obj->clear_pipes;
 
 Deletes all elements from the array.
+
 =item count_pipes
 
     my $count = $obj->count_pipes;
 
 Returns the number of elements in the array.
+
 =item index_pipes
 
     my $element   = $obj->index_pipes(3);
@@ -83,6 +85,7 @@ Takes a list of indices and returns the elements indicated by those indices.
 If only one index is given, the corresponding array element is returned. If
 several indices are given, the result is returned as an array in list context
 or as an array reference in scalar context.
+
 =item pipes
 
     my @values    = $obj->pipes;
@@ -94,16 +97,19 @@ Get or set the array values. If called without an arguments, it returns the
 array in list context, or a reference to the array in scalar context. If
 called with arguments, it expands array references found therein and sets the
 values.
+
 =item pipes_clear
 
     $obj->pipes_clear;
 
 Deletes all elements from the array.
+
 =item pipes_count
 
     my $count = $obj->pipes_count;
 
 Returns the number of elements in the array.
+
 =item pipes_index
 
     my $element   = $obj->pipes_index(3);
@@ -114,16 +120,19 @@ Takes a list of indices and returns the elements indicated by those indices.
 If only one index is given, the corresponding array element is returned. If
 several indices are given, the result is returned as an array in list context
 or as an array reference in scalar context.
+
 =item pipes_pop
 
     my $value = $obj->pipes_pop;
 
 Pops the last element off the array, returning it.
+
 =item pipes_push
 
     $obj->pipes_push(@values);
 
 Pushes elements onto the end of the array.
+
 =item pipes_set
 
     $obj->pipes_set(1 => $x, 5 => $y);
@@ -131,11 +140,13 @@ Pushes elements onto the end of the array.
 Takes a list of index/value pairs and for each pair it sets the array element
 at the indicated index to the indicated value. Returns the number of elements
 that have been set.
+
 =item pipes_shift
 
     my $value = $obj->pipes_shift;
 
 Shifts the first element off the array, returning it.
+
 =item pipes_splice
 
     $obj->pipes_splice(2, 1, $x, $y);
@@ -155,21 +166,25 @@ offset onward except for -length elements at the end of the array. If both the
 offset and the length are omitted, removes everything. If the offset is past
 the end of the array, it issues a warning, and splices at the end of the
 array.
+
 =item pipes_unshift
 
     $obj->pipes_unshift(@values);
 
 Unshifts elements onto the beginning of the array.
+
 =item pop_pipes
 
     my $value = $obj->pop_pipes;
 
 Pops the last element off the array, returning it.
+
 =item push_pipes
 
     $obj->push_pipes(@values);
 
 Pushes elements onto the end of the array.
+
 =item set_pipes
 
     $obj->set_pipes(1 => $x, 5 => $y);
@@ -177,11 +192,13 @@ Pushes elements onto the end of the array.
 Takes a list of index/value pairs and for each pair it sets the array element
 at the indicated index to the indicated value. Returns the number of elements
 that have been set.
+
 =item shift_pipes
 
     my $value = $obj->shift_pipes;
 
 Shifts the first element off the array, returning it.
+
 =item splice_pipes
 
     $obj->splice_pipes(2, 1, $x, $y);
@@ -201,6 +218,7 @@ offset onward except for -length elements at the end of the array. If both the
 offset and the length are omitted, removes everything. If the offset is past
 the end of the array, it issues a warning, and splices at the end of the
 array.
+
 =item unshift_pipes
 
     $obj->unshift_pipes(@values);

@@ -34,6 +34,7 @@ lib/Text/Pipe/Lowercase.pm
 lib/Text/Pipe/Multiplex.pm
 lib/Text/Pipe/Repeat.pm
 lib/Text/Pipe/Reverse.pm
+lib/Text/Pipe/Split.pm
 lib/Text/Pipe/Stackable.pm
 lib/Text/Pipe/Tester.pm
 lib/Text/Pipe/Trim.pm
@@ -49,4 +50,6 @@ t/03_def_pipe.t
 t/04_array.t
 t/05_code.t
 t/06_multiplex.t
+t/07_pipe_procedural.t
+t/08_split.t
 t/perlcriticrc

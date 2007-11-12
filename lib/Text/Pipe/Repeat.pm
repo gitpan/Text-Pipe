@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Text::Pipe::Base';
@@ -69,11 +69,13 @@ Methods inherited from L<Text::Pipe::Base>:
     $obj->clear_join;
 
 Clears the value.
+
 =item clear_times
 
     $obj->clear_times;
 
 Clears the value.
+
 =item join
 
     my $value = $obj->join;
@@ -81,11 +83,13 @@ Clears the value.
 
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
+
 =item join_clear
 
     $obj->join_clear;
 
 Clears the value.
+
 =item times
 
     my $value = $obj->times;
@@ -93,6 +97,7 @@ Clears the value.
 
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
+
 =item times_clear
 
     $obj->times_clear;

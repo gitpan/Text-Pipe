@@ -7,7 +7,7 @@ use File::Temp 'tempfile';
 use YAML;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.04';
 
 
 use base qw(Module::Install::Base);
@@ -51,6 +51,8 @@ sub process_templates {
     # author, you won't have the templates anyway, only the generated files.
 
     return unless $self->is_author;
+
+    $::WANTS_MODULE_INSTALL_TEMPLATE = 1;
 
     my $config = {
         template => {
@@ -128,6 +130,13 @@ sub process_templates {
 sub MY::postamble {
     my $self = shift;
     return '' if defined $::IS_MODULE_INSTALL_TEMPLATE;
+
+    # for some reason, Module::Install runs this subroutine even if the
+    # Makefile.PL doesn't specify process_template(). So here we check whether
+    # process_template() has been run.
+
+    return '' unless defined $::WANTS_MODULE_INSTALL_TEMPLATE;
+
     return '' unless Module::Install::Template->is_author;
     return <<'EOPOSTAMBLE';
 create_distdir : pm_to_blib
@@ -150,5 +159,5 @@ EOPOSTAMBLE
 
 __END__
 
-#line 242
+#line 251
 

@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Text::Pipe::Base';
@@ -56,6 +56,7 @@ Methods inherited from L<Text::Pipe::Base>:
     $obj->clear_code;
 
 Clears the value.
+
 =item code
 
     my $value = $obj->code;
@@ -63,6 +64,7 @@ Clears the value.
 
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
+
 =item code_clear
 
     $obj->code_clear;

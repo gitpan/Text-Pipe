@@ -4,12 +4,22 @@ use strict;
 use warnings;
 use Text::Pipe::Base;   # for def_pipe()
 use Sub::Name;
-
-
-our $VERSION = '0.01';
-
-
 use UNIVERSAL::require;
+
+
+our $VERSION = '0.02';
+
+
+use base 'Exporter';
+
+
+our %EXPORT_TAGS = (
+    util  => [ qw(pipe) ],
+);
+
+
+our @EXPORT_OK = @{ $EXPORT_TAGS{all} = [ map { @$_ } values %EXPORT_TAGS ] };
+
 
 # this is just a factory
 
@@ -35,6 +45,14 @@ sub def_pipe {
     no strict 'refs';
     @{ "${package}::ISA" } = ('Text::Pipe::Base');
     *{ "${package}::filter" } = subname "${package}::filter" => $code;
+}
+
+
+# Easier, procedural, way to construct a pipe
+
+sub pipe {
+    my ($type, @args) = @_;
+    Text::Pipe->new($type, @args);
 }
 
 

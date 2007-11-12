@@ -4,14 +4,21 @@ use warnings;
 use strict;
 use Text::Pipe;
 use Text::Pipe::Stackable;
-use Test::More tests => 10;
+use Test::More tests => 14;
 
 my $pipe_trim    = Text::Pipe->new('Trim');
 my $pipe_uc      = Text::Pipe->new('Uppercase');
 my $pipe_repeat  = Text::Pipe->new('Repeat', times => 2, join => ' = ');
 my $pipe_reverse = Text::Pipe->new('Reverse');
 
-my $stacked_pipe = Text::Pipe::Stackable->new($pipe_trim, $pipe_uc, $pipe_repeat);
+isa_ok($pipe_trim,    'Text::Pipe::Trim');
+isa_ok($pipe_uc,      'Text::Pipe::Uppercase');
+isa_ok($pipe_repeat,  'Text::Pipe::Repeat');
+isa_ok($pipe_reverse, 'Text::Pipe::Reverse');
+
+my $stacked_pipe = Text::Pipe::Stackable->new(
+    $pipe_trim, $pipe_uc, $pipe_repeat
+);
 
 my $input = '  a test  ';
 

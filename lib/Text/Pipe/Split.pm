@@ -1,8 +1,7 @@
-package Text::Pipe::List::Reduce;
+package Text::Pipe::Split;
 
 use warnings;
 use strict;
-use List::Util 'reduce';
 
 
 our $VERSION = '0.02';
@@ -11,15 +10,21 @@ our $VERSION = '0.02';
 use base 'Text::Pipe::Base';
 
 
-__PACKAGE__->mk_scalar_accessors(qw(code));
+__PACKAGE__->mk_scalar_accessors(qw(pattern limit));
 
 
 sub filter {
     my ($self, $input) = @_;
-    return $input unless ref $input eq 'ARRAY';
 
-    # kludge because of prototype requirements
-    reduce { $self->code->($a, $b) } @$input;
+    return $input if ref $input;
+
+    my $pattern = $self->pattern;
+    $pattern = '' unless defined $pattern;
+
+    my $limit = $self->limit;
+    $limit = 0 unless defined $limit;
+
+    [ split /$pattern/ => $input, $limit ];
 }
 
 
@@ -32,15 +37,18 @@ __END__
 
 =head1 NAME
 
-Text::Pipe::List::Reduce - Common text filter API
+Text::Pipe::Split - Common text filter API
 
 =head1 SYNOPSIS
 
-    Text::Pipe::List::Reduce->new;
+    Text::Pipe::Split->new;
 
 =head1 DESCRIPTION
 
-Text::Pipe::List::Reduce inherits from L<Text::Pipe::Base>.
+This pipe segment can split a string along a pattern into an array. It works
+like perl's C<split()>.
+
+Text::Pipe::Split inherits from L<Text::Pipe::Base>.
 
 Methods inherited from L<Text::Pipe::Base>:
 
@@ -50,25 +58,52 @@ Methods inherited from L<Text::Pipe::Base>:
 
 =over 4
 
-=item clear_code
+=item clear_limit
 
-    $obj->clear_code;
+    $obj->clear_limit;
 
 Clears the value.
 
-=item code
+=item clear_pattern
 
-    my $value = $obj->code;
-    $obj->code($value);
+    $obj->clear_pattern;
+
+Clears the value.
+
+=item limit
+
+    my $value = $obj->limit;
+    $obj->limit($value);
 
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item code_clear
+=item limit_clear
 
-    $obj->code_clear;
+    $obj->limit_clear;
 
 Clears the value.
+
+=item pattern
+
+    my $value = $obj->pattern;
+    $obj->pattern($value);
+
+A basic getter/setter method. If called without an argument, it returns the
+value. If called with a single argument, it sets the value.
+
+=item pattern_clear
+
+    $obj->pattern_clear;
+
+Clears the value.
+
+=item filter
+
+Takes a string input and splits it along the pattern, respecting the limit
+like perl's C<split()> function.
+
+If something else than a string is passed, it is returned unchanged.
 
 =back
 
