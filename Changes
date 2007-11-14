@@ -4,6 +4,13 @@ global:
 releases:
   - author: 'Marcel Gruenauer <marcel@cpan.org>'
     changes:
+      - Text::Pipe::Base uses Class::Accessor::Constructor's mk_constructor for new() and defines an empty init()
+    date: 2007-11-14T21:50:26Z
+    tags:
+      - NEWFEATURE
+    version: 0.03
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
       - Fixed newlines in pod
       - added pipe() method to Text::Pipe for easier construction
       - added Text::Pipe::Split

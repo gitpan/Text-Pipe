@@ -5,16 +5,20 @@ use strict;
 use UNIVERSAL::require;
     
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
-use base 'Class::Accessor::Complex';
+use base qw(Class::Accessor::Complex Class::Accessor::Constructor);
 
     
 use overload '|' => 'bit_or';
 
 
-__PACKAGE__->mk_new;
+__PACKAGE__->mk_constructor;
+
+
+# so subclasses can call SUPER::init(@_)
+sub init {}
 
 
 sub filter_single {
@@ -82,19 +86,14 @@ this:
 
     my $stackable_pipe = $pipe1 | $pipe2 | $pipe3;
 
-Text::Pipe::Base inherits from L<Class::Accessor::Complex>.
+Text::Pipe::Base inherits from L<Class::Accessor::Complex>,
+L<Class::Accessor::Constructor>, and L<Class::Accessor::Constructor::Base>.
 
 =head1 METHODS
 
 =over 4
 
-=item new
 
-    Text::Pipe::Base->new;
-    Text::Pipe::Base->new(%args);
-
-A constructor. It can take named arguments which are used to set the object's
-accessors.
 
 =item filter_single
 

@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Text::Pipe::Base';
@@ -41,10 +41,6 @@ Text::Pipe::List::Grep - Common text filter API
 =head1 DESCRIPTION
 
 Text::Pipe::List::Grep inherits from L<Text::Pipe::Base>.
-
-Methods inherited from L<Text::Pipe::Base>:
-
-     new()
 
 =head1 METHODS
 

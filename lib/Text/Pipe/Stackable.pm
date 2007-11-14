@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Text::Pipe::Base';
@@ -89,10 +89,6 @@ Text::Pipe::Stackable - Stackable text pipes
 =head1 DESCRIPTION
 
 Text::Pipe::Stackable inherits from L<Text::Pipe::Base>.
-
-Methods inherited from L<Text::Pipe::Base>:
-
-     new()
 
 =head1 METHODS
 

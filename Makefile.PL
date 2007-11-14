@@ -4,6 +4,7 @@ all_from 'lib/Text/Pipe.pm';
 perl_version '5.006';
 
 requires 'Class::Accessor::Complex';
+requires 'Class::Accessor::Constructor';
 requires 'List::Util';
 requires 'Sub::Name';
 requires 'UNIVERSAL::require';

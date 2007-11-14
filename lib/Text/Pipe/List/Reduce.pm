@@ -5,7 +5,7 @@ use strict;
 use List::Util 'reduce';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Text::Pipe::Base';
@@ -41,10 +41,6 @@ Text::Pipe::List::Reduce - Common text filter API
 =head1 DESCRIPTION
 
 Text::Pipe::List::Reduce inherits from L<Text::Pipe::Base>.
-
-Methods inherited from L<Text::Pipe::Base>:
-
-     new()
 
 =head1 METHODS
 

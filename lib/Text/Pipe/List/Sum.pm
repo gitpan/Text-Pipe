@@ -5,7 +5,7 @@ use strict;
 use List::Util 'sum';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Text::Pipe::Base';
@@ -37,10 +37,6 @@ Text::Pipe::List::Sum - Common text filter API
 =head1 DESCRIPTION
 
 Text::Pipe::List::Sum inherits from L<Text::Pipe::Base>.
-
-Methods inherited from L<Text::Pipe::Base>:
-
-     new()
 
 =head1 METHODS
 

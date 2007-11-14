@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Text::Pipe::Base';
@@ -49,10 +49,6 @@ This pipe segment can split a string along a pattern into an array. It works
 like perl's C<split()>.
 
 Text::Pipe::Split inherits from L<Text::Pipe::Base>.
-
-Methods inherited from L<Text::Pipe::Base>:
-
-     new()
 
 =head1 METHODS
 
