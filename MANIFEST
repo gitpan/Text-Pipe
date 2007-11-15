@@ -15,7 +15,10 @@ inc/Test/More.pm
 inc/UNIVERSAL/require.pm
 inc/YAML.pm
 lib/Text/Pipe.pm
+lib/Text/Pipe/Append.pm
 lib/Text/Pipe/Base.pm
+lib/Text/Pipe/Chomp.pm
+lib/Text/Pipe/Chop.pm
 lib/Text/Pipe/Code.pm
 lib/Text/Pipe/List/First.pm
 lib/Text/Pipe/List/Grep.pm
@@ -31,9 +34,13 @@ lib/Text/Pipe/List/Size.pm
 lib/Text/Pipe/List/Sort.pm
 lib/Text/Pipe/List/Sum.pm
 lib/Text/Pipe/Lowercase.pm
+lib/Text/Pipe/LowercaseFirst.pm
 lib/Text/Pipe/Multiplex.pm
+lib/Text/Pipe/Prepend.pm
+lib/Text/Pipe/Print.pm
 lib/Text/Pipe/Repeat.pm
 lib/Text/Pipe/Reverse.pm
+lib/Text/Pipe/Say.pm
 lib/Text/Pipe/Split.pm
 lib/Text/Pipe/Stackable.pm
 lib/Text/Pipe/Tester.pm

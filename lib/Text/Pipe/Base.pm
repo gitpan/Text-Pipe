@@ -5,7 +5,7 @@ use strict;
 use UNIVERSAL::require;
     
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 use base qw(Class::Accessor::Complex Class::Accessor::Constructor);
@@ -37,7 +37,6 @@ sub filter {
     }
 
 }
-
 
 
 sub bit_or {

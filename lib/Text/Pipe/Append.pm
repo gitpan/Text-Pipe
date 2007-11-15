@@ -1,8 +1,7 @@
-package Text::Pipe::List::Sum;
+package Text::Pipe::Append;
 
 use warnings;
 use strict;
-use List::Util 'sum';
 
 
 our $VERSION = '0.04';
@@ -11,11 +10,13 @@ our $VERSION = '0.04';
 use base 'Text::Pipe::Base';
 
 
-sub filter {
-    my ($self, $input) = @_;
-    return $input unless ref $input eq 'ARRAY';
+__PACKAGE__->mk_scalar_accessors(qw(text));
 
-    sum @$input;
+
+sub filter_single {
+    my ($self, $input) = @_;
+    return $input unless defined $self->text;
+    $input . $self->text;
 }
 
 
@@ -28,21 +29,39 @@ __END__
 
 =head1 NAME
 
-Text::Pipe::List::Sum - Common text filter API
+Text::Pipe::Append - Common text filter API
 
 =head1 SYNOPSIS
 
-    Text::Pipe::List::Sum->new;
+    Text::Pipe::Append->new;
 
 =head1 DESCRIPTION
 
-Text::Pipe::List::Sum inherits from L<Text::Pipe::Base>.
+Text::Pipe::Append inherits from L<Text::Pipe::Base>.
 
 =head1 METHODS
 
 =over 4
 
+=item clear_text
 
+    $obj->clear_text;
+
+Clears the value.
+
+=item text
+
+    my $value = $obj->text;
+    $obj->text($value);
+
+A basic getter/setter method. If called without an argument, it returns the
+value. If called with a single argument, it sets the value.
+
+=item text_clear
+
+    $obj->text_clear;
+
+Clears the value.
 
 =back
 

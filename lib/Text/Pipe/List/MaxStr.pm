@@ -5,7 +5,7 @@ use strict;
 use List::Util 'maxstr';
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 use base 'Text::Pipe::Base';

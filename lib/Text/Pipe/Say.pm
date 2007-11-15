@@ -1,8 +1,7 @@
-package Text::Pipe::List::Sum;
+package Text::Pipe::Say;
 
 use warnings;
 use strict;
-use List::Util 'sum';
 
 
 our $VERSION = '0.04';
@@ -11,11 +10,10 @@ our $VERSION = '0.04';
 use base 'Text::Pipe::Base';
 
 
-sub filter {
+sub filter_single {
     my ($self, $input) = @_;
-    return $input unless ref $input eq 'ARRAY';
-
-    sum @$input;
+    print "$input\n";
+    $input;
 }
 
 
@@ -28,15 +26,15 @@ __END__
 
 =head1 NAME
 
-Text::Pipe::List::Sum - Common text filter API
+Text::Pipe::Say - Common text filter API
 
 =head1 SYNOPSIS
 
-    Text::Pipe::List::Sum->new;
+    Text::Pipe::Say->new;
 
 =head1 DESCRIPTION
 
-Text::Pipe::List::Sum inherits from L<Text::Pipe::Base>.
+Text::Pipe::Say inherits from L<Text::Pipe::Base>.
 
 =head1 METHODS
 
