@@ -1,5 +1,7 @@
 Changes
+inc/Module/AutoInstall.pm
 inc/Module/Install.pm
+inc/Module/Install/AutoInstall.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
@@ -13,7 +15,6 @@ inc/Module/Install/WriteAll.pm
 inc/Test/Compile.pm
 inc/Test/More.pm
 inc/UNIVERSAL/require.pm
-inc/YAML.pm
 lib/Text/Pipe.pm
 lib/Text/Pipe/Append.pm
 lib/Text/Pipe/Base.pm

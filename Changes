@@ -4,6 +4,16 @@ global:
 releases:
   - author: 'Marcel Gruenauer <marcel@cpan.org>'
     changes:
+      - set the version to 0.05
+      - 'Makefile.PL: added auto_install()'
+      - updated MANIFEST
+      - updated t/perlcriticrc
+      - "Text::Pipe::Base: added 'fallback => 1' to overload; got lots of CPAN tester results saying that stringification wasn't overloaded"
+    date: 2007-11-24T19:30:05Z
+    tags: []
+    version: 0.05
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
       - 'added Append, Chomp, Chop, LowercaseFirst, Prepend, Print and Say segments, and tests'
     date: 2007-11-15T15:35:46Z
     tags:

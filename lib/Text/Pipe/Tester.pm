@@ -44,6 +44,11 @@ Text::Pipe::Tester - Common text filter API
 
 Text::Pipe::Tester inherits from L<Exporter>.
 
+The superclass L<Exporter> defines these methods and functions:
+
+    as_heavy(), export(), export_fail(), export_ok_tags(), export_tags(),
+    export_to_level(), import(), require_version()
+
 =head1 METHODS
 
 =over 4

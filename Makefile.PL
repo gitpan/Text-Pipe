@@ -1,4 +1,6 @@
 use inc::Module::Install;
+include 'Module::AutoInstall';
+
 name 'Text-Pipe';
 all_from 'lib/Text/Pipe.pm';
 perl_version '5.006';
@@ -19,5 +21,6 @@ process_templates(
 );
 
 use_standard_tests(without => 'pod_coverage');
+auto_install;
 auto_include;
 WriteAll;

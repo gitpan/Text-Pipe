@@ -7,7 +7,7 @@ use Sub::Name;
 use UNIVERSAL::require;
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base 'Exporter';
@@ -107,6 +107,10 @@ class documentations.
 
 If you talk about this module in blogs, on del.icio.us or anywhere else,
 please use the C<textpipe> tag.
+
+=head1 VERSION 
+                   
+This document describes version 0.05 of L<Text::Pipe>.
 
 =head1 BUGS AND LIMITATIONS
 
