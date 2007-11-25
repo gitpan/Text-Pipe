@@ -6,6 +6,9 @@ use Text::Pipe;
 use Test::More;
 
 
+our $VERSION = '0.06';
+
+
 use base 'Exporter';
 
 
@@ -61,6 +64,10 @@ The superclass L<Exporter> defines these methods and functions:
 
 If you talk about this module in blogs, on del.icio.us or anywhere else,
 please use the C<textpipe> tag.
+
+=head1 VERSION 
+                   
+This document describes version 0.06 of L<Text::Pipe::Tester>.
 
 =head1 BUGS AND LIMITATIONS
 

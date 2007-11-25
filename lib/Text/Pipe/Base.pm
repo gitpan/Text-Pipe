@@ -5,7 +5,7 @@ use strict;
 use UNIVERSAL::require;
 
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 use base qw(Class::Accessor::Complex Class::Accessor::Constructor);
@@ -178,7 +178,7 @@ please use the C<textpipe> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.05 of L<Text::Pipe::Base>.
+This document describes version 0.06 of L<Text::Pipe::Base>.
 
 =head1 BUGS AND LIMITATIONS
 

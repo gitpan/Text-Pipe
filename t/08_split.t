@@ -2,10 +2,10 @@
 
 use warnings;
 use strict;
-use Text::Pipe 'pipe';
+use Text::Pipe 'PIPE';
 use Test::More tests => 4;
 
-my $pipe = pipe 'Split';
+my $pipe = PIPE 'Split';
 
 is_deeply($pipe->filter('test'), [ qw(t e s t) ], 'split with defaults');
 

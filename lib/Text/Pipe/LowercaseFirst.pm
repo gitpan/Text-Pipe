@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 use base 'Text::Pipe::Base';
@@ -108,7 +108,7 @@ please use the C<textpipe> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.05 of L<Text::Pipe::LowercaseFirst>.
+This document describes version 0.06 of L<Text::Pipe::LowercaseFirst>.
 
 =head1 BUGS AND LIMITATIONS
 

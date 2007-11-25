@@ -4,6 +4,15 @@ global:
 releases:
   - author: 'Marcel Gruenauer <marcel@cpan.org>'
     changes:
+      - set the version to 0.06
+      - 'Text::Pipe: pipe() is now called PIPE() so as to not conflict with the perl built-in pipe()'
+      - 'Text::Pipe::Tester: added VERSION'
+      - 'Text::Pipe: documented PIPE()'
+    date: 2007-11-25T20:43:46Z
+    tags: []
+    version: 0.06
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
       - set the version to 0.05
       - 'Makefile.PL: added auto_install()'
       - updated MANIFEST

@@ -7,14 +7,14 @@ use Sub::Name;
 use UNIVERSAL::require;
 
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 use base 'Exporter';
 
 
 our %EXPORT_TAGS = (
-    util  => [ qw(pipe) ],
+    util  => [ qw(PIPE) ],
 );
 
 
@@ -50,7 +50,7 @@ sub def_pipe {
 
 # Easier, procedural, way to construct a pipe
 
-sub pipe {
+sub PIPE {
     my ($type, @args) = @_;
     Text::Pipe->new($type, @args);
 }
@@ -95,6 +95,21 @@ a C<Text::Pipe::Foo::Bar> pipe segment, you can instantiate it with
 Some pipe segments take arguments. These are described in their respective
 class documentations.
 
+=head1 EXPORTS
+
+=over 4
+
+=item PIPE
+
+    my $pipe = PIPE('Reverse', times => 2, join => ' = ');
+    my $pipe = PIPE('UppercaseFirst');
+
+Text::Pipe exports, on request, the function C<PIPE()> that makes it easier to
+construct pipes. It takes the same arguments as new() and returns the
+corresponding pipe.
+
+=back
+
 =head1 METHODS
 
 =over 4
@@ -110,7 +125,7 @@ please use the C<textpipe> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.05 of L<Text::Pipe>.
+This document describes version 0.06 of L<Text::Pipe>.
 
 =head1 BUGS AND LIMITATIONS
 

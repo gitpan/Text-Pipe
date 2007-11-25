@@ -2,13 +2,13 @@
 
 use warnings;
 use strict;
-use Text::Pipe 'pipe';
+use Text::Pipe 'PIPE';
 use Test::More tests => 8;
 
-my $pipe_trim    = pipe 'Trim';
-my $pipe_uc      = pipe 'Uppercase';
-my $pipe_repeat  = pipe 'Repeat', times => 2, join => ' = ';
-my $pipe_reverse = pipe 'Reverse';
+my $pipe_trim    = PIPE 'Trim';
+my $pipe_uc      = PIPE 'Uppercase';
+my $pipe_repeat  = PIPE 'Repeat', times => 2, join => ' = ';
+my $pipe_reverse = PIPE 'Reverse';
 
 my $stacked_pipe = $pipe_trim | $pipe_uc | $pipe_repeat;
 
