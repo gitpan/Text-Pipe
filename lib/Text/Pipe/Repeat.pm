@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.06';
+our $VERSION = '0.08';
 
 
 use base 'Text::Pipe::Base';
@@ -29,7 +29,7 @@ sub filter_single {
     my $times = $self->times;
     my $join  = $self->join;
 
-    for (1 .. $times) {
+    for (1..$times) {
         $output .= $input;
         $output .= $join unless $_ eq $times;
     }
@@ -50,21 +50,74 @@ Text::Pipe::Repeat - Common text filter API
 
 =head1 SYNOPSIS
 
-    Text::Pipe::Repeat->new;
+    Text::Pipe::Repeat->new(times => 2, join => "\n");
 
 =head1 DESCRIPTION
+
+This is a pipe segment that takes input, repeats it a given number of times
+(default: 2) and join the repeated strings with a given value (default: empty
+string).
+
+=head1 METHODS
+
+=over 4
+
+=item clear_join
+
+    $obj->clear_join;
+
+Clears the value that indicates how the repeated input should be joined.
+
+=item clear_times
+
+    $obj->clear_times;
+
+Clears the value that indicates how many times the input should be repeated.
+
+=item filter_single
+
+Implements the actual segment filter that acts upon a single string. It takes
+an input string, repeats it a number of times indicated by C<times()> and
+joins the repeated strings with the value of C<join()>, then returns it.
+
+=item join
+
+    my $value = $obj->join;
+    $obj->join($value);
+
+A basic getter/setter method. The value indicates how the repeated input
+should be joined. If called without an argument, it returns the value. If
+called with a single argument, it sets the value.
+
+=item join_clear
+
+Synonym for C<clear_join()>.
+
+=item times
+
+    my $value = $obj->times;
+    $obj->times($value);
+
+A basic getter/setter method. The value indicates how many times the input
+should be repeated. If called without an argument, it returns the value. If
+called with a single argument, it sets the value.
+
+=item times_clear
+
+Synonym for C<clear_times()>.
+
+=back
 
 Text::Pipe::Repeat inherits from L<Text::Pipe::Base>.
 
 The superclass L<Text::Pipe::Base> defines these methods and functions:
 
-    new(), ()(), (|(), bit_or(), filter(), init()
+    new(), bit_or(), filter(), init()
 
 The superclass L<Class::Accessor::Complex> defines these methods and
 functions:
 
-    carp(), cluck(), croak(), flatten(), mk_abstract_accessors(),
-    mk_array_accessors(), mk_boolean_accessors(),
+    mk_abstract_accessors(), mk_array_accessors(), mk_boolean_accessors(),
     mk_class_array_accessors(), mk_class_hash_accessors(),
     mk_class_scalar_accessors(), mk_concat_accessors(),
     mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
@@ -82,13 +135,13 @@ The superclass L<Class::Accessor> defines these methods and functions:
 The superclass L<Class::Accessor::Installer> defines these methods and
 functions:
 
-    install_accessor(), subname()
+    install_accessor()
 
 The superclass L<Class::Accessor::Constructor> defines these methods and
 functions:
 
-    NO_DIRTY(), WITH_DIRTY(), _make_constructor(), mk_constructor(),
-    mk_constructor_with_dirty(), mk_singleton_constructor()
+    _make_constructor(), mk_constructor(), mk_constructor_with_dirty(),
+    mk_singleton_constructor()
 
 The superclass L<Data::Inherited> defines these methods and functions:
 
@@ -97,10 +150,10 @@ The superclass L<Data::Inherited> defines these methods and functions:
 The superclass L<Class::Accessor::Constructor::Base> defines these methods
 and functions:
 
-    HYGIENIC(), STORE(), clear_dirty(), clear_hygienic(),
-    clear_unhygienic(), contains_hygienic(), contains_unhygienic(),
-    delete_hygienic(), delete_unhygienic(), dirty(), dirty_clear(),
-    dirty_set(), elements_hygienic(), elements_unhygienic(), hygienic(),
+    STORE(), clear_dirty(), clear_hygienic(), clear_unhygienic(),
+    contains_hygienic(), contains_unhygienic(), delete_hygienic(),
+    delete_unhygienic(), dirty(), dirty_clear(), dirty_set(),
+    elements_hygienic(), elements_unhygienic(), hygienic(),
     hygienic_clear(), hygienic_contains(), hygienic_delete(),
     hygienic_elements(), hygienic_insert(), hygienic_is_empty(),
     hygienic_size(), insert_hygienic(), insert_unhygienic(),
@@ -114,67 +167,11 @@ The superclass L<Tie::StdHash> defines these methods and functions:
     CLEAR(), DELETE(), EXISTS(), FETCH(), FIRSTKEY(), NEXTKEY(), SCALAR(),
     TIEHASH()
 
-=head1 METHODS
-
-=over 4
-
-=item clear_join
-
-    $obj->clear_join;
-
-Clears the value.
-
-=item clear_times
-
-    $obj->clear_times;
-
-Clears the value.
-
-=item join
-
-    my $value = $obj->join;
-    $obj->join($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item join_clear
-
-    $obj->join_clear;
-
-Clears the value.
-
-=item times
-
-    my $value = $obj->times;
-    $obj->times($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item times_clear
-
-    $obj->times_clear;
-
-Clears the value.
-
-=back
-
-=head1 TAGS
-
-If you talk about this module in blogs, on del.icio.us or anywhere else,
-please use the C<textpipe> tag.
-
-=head1 VERSION 
-                   
-This document describes version 0.06 of L<Text::Pipe::Repeat>.
-
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
-Please report any bugs or feature requests to
-C<<bug-text-pipe@rt.cpan.org>>, or through the web interface at
+Please report any bugs or feature requests through the web interface at
 L<http://rt.cpan.org>.
 
 =head1 INSTALLATION
@@ -184,16 +181,20 @@ See perlmodinstall for information and options on installing Perl modules.
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you. Or see L<http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 
-=head1 AUTHOR
+The development version lives at L<http://github.com/hanekomu/text-pipe/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
+
+=head1 AUTHORS
 
 Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007 by Marcel GrE<uuml>nauer
+Copyright 2007-2008 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
