@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Text::Pipe::Base';
@@ -37,7 +37,7 @@ Text::Pipe::LowercaseFirst - Common text filter API
 
 =over 4
 
-=item filter_single
+=item C<filter_single>
 
 Implements the actual segment filter that acts upon a single string. It simply
 takes an input string, uses C<lcfirst()> it and returns it.
@@ -130,11 +130,15 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2008 by the authors.
+Copyright 2007-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 SEE ALSO
+
+If you are looking for the Windows software 'TextPipe Pro', go to
+http://www.datamystic.com/ - this Perl module has nothing to do with it.
 
 =cut
 

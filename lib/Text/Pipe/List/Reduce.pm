@@ -5,7 +5,7 @@ use strict;
 use List::Util 'reduce';
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Text::Pipe::Base';
@@ -44,13 +44,13 @@ Text::Pipe::List::Reduce - Common text filter API
 
 =over 4
 
-=item clear_code
+=item C<clear_code>
 
     $obj->clear_code;
 
 Clears the coderef.
 
-=item code
+=item C<code>
 
     my $value = $obj->code;
     $obj->code($value);
@@ -58,11 +58,11 @@ Clears the coderef.
 A basic getter/setter method for the coderef. If called without an argument,
 it returns the value. If called with a single argument, it sets the value.
 
-=item code_clear
+=item C<code_clear>
 
 Synonym for C<clear_code()>.
 
-=item filter
+=item C<filter>
 
 If the input is an array reference, it reduces the array by calling the
 coderef, in a scalar context, multiple times, setting C<$a> and C<$b> each
@@ -164,11 +164,15 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2008 by the authors.
+Copyright 2007-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=head1 SEE ALSO
+
+If you are looking for the Windows software 'TextPipe Pro', go to
+http://www.datamystic.com/ - this Perl module has nothing to do with it.
 
 =cut
 

@@ -2,12 +2,13 @@ package Text::Pipe;
 
 use strict;
 use warnings;
+use 5.006;
 use Text::Pipe::Base;   # for def_pipe()
 use Sub::Name;
 use UNIVERSAL::require;
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Exporter';
@@ -68,7 +69,15 @@ Text::Pipe - Common text filter API
 =head1 SYNOPSIS
 
     my $pipe = Text::Pipe->new('List::First', code => { $_ < 7 });
-    my $result = $pipe->filter(...);
+    my $result = $pipe->filter('foo');
+
+    # or
+
+    use Web::Scraper;
+    my $scraper = scraper {
+        process '//p/a',
+            'texts[]' => [ 'TEXT', PIPE('Trim'), PIPE('Uppercase') ];
+    };
 
 =head1 DESCRIPTION
 
@@ -79,11 +88,14 @@ L<Text::Pipe::Stackable>.
 
 The problem that this distribution tries to solve is that there are several
 distributions on CPAN which use text filtering in some way or other, for
-example the Template Toolkit. But each distribution is somewhat different, and
-they have to reimplement the same text filters over and over again. 
+example the Template Toolkit or Web::Scraper. But each distribution is
+somewhat different, and they have to reimplement the same text filters over
+and over again.
 
 This distribution aims at offering a common text filter API. So if you want to
-use text pipes with Template Toolkit, you just need to write an adapter.
+use text pipes with Template Toolkit, you just need to write an adapter. With
+Web::Scraper, you can even use text pipes directly Using the C<PIPE()>
+function, as shown in the synopsis.
 
 Text pipe segments live in the C<Text::Pipe::> namespace. So if you implement
 a C<Text::Pipe::Foo::Bar> pipe segment, you can instantiate it with
@@ -97,7 +109,7 @@ class documentations.
 
 =over 4
 
-=item PIPE
+=item C<PIPE>
 
     my $pipe = PIPE('Reverse', times => 2, join => ' = ');
     my $pipe = PIPE('UppercaseFirst');
@@ -112,7 +124,7 @@ corresponding pipe.
 
 =over 4
 
-=item new
+=item C<new>
 
     my $pipe = Text::Pipe->new('List::First', code => { $_ < 7 });
 
@@ -120,7 +132,7 @@ Constructs a new pipe. The first argument is the pipe segment type - in the
 example above a C<Text::Pipe::List::First> would be constructed. The remaining
 arguments are passed to that segment's constructor.
 
-=item def_pipe
+=item C<def_pipe>
 
     Text::Pipe->def_pipe('Foobar', sub { lc $_[1] });
     my $pipe_lowercase = Text::Pipe->new('Foobar');
@@ -161,10 +173,15 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2008 by the authors.
+Copyright 2007-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+If you are looking for the Windows software 'TextPipe Pro', go to
+http://www.datamystic.com/ - this Perl module has nothing to do with it.
 
 =cut
 
